@@ -75,3 +75,19 @@ if total == 0:
 else: 
     print(f'Total de votos válidos: {total}')
     print('\n====== RESULTADO POR CANDIDATOS ======')    
+    print(f'Promessinha: {votos_promessinha} votos.')
+    print(f'Influêncio Digital: {votos_influencio} votos.')
+    print(f'Impostácio: {votos_impostacio} votos.')
+    print(f'Dona burocracia: {votos_burocracia} votos.')
+
+    #porcentagem de votos
+    porcentagem_promessinha = (votos_promessinha/total) * 100
+    porcentagem_influencio = (votos_influencio/total) * 100
+    porcentagem_impostacio = (votos_impostacio/total) * 100
+    porcentagem_burocracia = (votos_burocracia/total) * 100
+
+    print('====== PORCENTAGEM DE VOTOS ======')
+    print(f'Promessinha: {porcentagem_promessinha:.1f}%')
+    print(f'Influêncio Digital: {porcentagem_influencio:.1f}%')
+    print(f'Impostácio: {porcentagem_impostacio:.1f}%')
+    print(f'Dona burocracia: {porcentagem_burocracia:.1f}%')
