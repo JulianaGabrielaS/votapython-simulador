@@ -17,14 +17,14 @@ print('Isto é apenas uma simulação\n')
 
 while True:
     print("=== CANDIDATOS ===")
-    print('10 - Promessinha\n20 - Influêncio Digital\n30 - Impostácio\n40 - Dona Burocrácia')
+    print('10 - Promessinha\n20 - Influêncio Digital\n30 - Impostácio\n40 - Dona Burocracia')
 
     numero = input('\nDigite o número do seu candidato: ')
     if numero == '0':
         break
     elif numero == '10':
         candidato = candidatos[0]
-        print(f'Candidado: {candidato}')
+        print(f'Candidato: {candidato}')
         confirma = input('Confirma o voto? [S/N]: ').lower()
         if confirma == 's':
             votos_promessinha += 1
@@ -55,7 +55,7 @@ while True:
         confirma = input('Confirma o voto? [S/N]: ').lower()
         if confirma == 's':
             votos_burocracia += 1
-            print('Voto registrado')
+            print('Voto registrado!')
         else:
             print('Voto cancelado.')
     else:
@@ -74,11 +74,11 @@ if total == 0:
     print('Não há resultado para apresentar.')
 else: 
     print(f'Total de votos válidos: {total}')
-    print('\n====== RESULTADO POR CANDIDATOS ======')    
+    print('\n====== RESULTADO POR CANDIDATO ======')    
     print(f'Promessinha: {votos_promessinha} votos.')
     print(f'Influêncio Digital: {votos_influencio} votos.')
     print(f'Impostácio: {votos_impostacio} votos.')
-    print(f'Dona burocracia: {votos_burocracia} votos.')
+    print(f'Dona Burocracia: {votos_burocracia} votos.')
 
     #porcentagem de votos
     porcentagem_promessinha = (votos_promessinha/total) * 100
@@ -90,4 +90,4 @@ else:
     print(f'Promessinha: {porcentagem_promessinha:.1f}%')
     print(f'Influêncio Digital: {porcentagem_influencio:.1f}%')
     print(f'Impostácio: {porcentagem_impostacio:.1f}%')
-    print(f'Dona burocracia: {porcentagem_burocracia:.1f}%')
+    print(f'Dona Burocracia: {porcentagem_burocracia:.1f}%')
