@@ -16,7 +16,7 @@ print('=== VOTA PYTHON ===')
 print('Isto é apenas uma simulação\n')
 
 while True:
-    print("\n=== CANDIDATOS ===")
+    print("=== CANDIDATOS ===")
     print('10 - Promessinha\n20 - Influêncio Digital\n30 - Impostácio\n40 - Dona Burocrácia')
 
     numero = input('\nDigite o número do seu candidato: ')
@@ -60,6 +60,9 @@ while True:
             print('Voto cancelado.')
     else:
         print('Número inválido!')
+    continua = input('Deseja votar novamente? [S/N]: ').lower()
+    if continua == 'n':
+        break
 
 #Apurações
 total = (votos_promessinha + votos_influencio + votos_impostacio + votos_burocracia)
@@ -71,6 +74,4 @@ if total == 0:
     print('Não há resultado para apresentar.')
 else: 
     print(f'Total de votos válidos: {total}')
-    
-    print('\n====== RESULTADO POR CANDIDATOS ======')
-    #próximo
+    print('\n====== RESULTADO POR CANDIDATOS ======')    
