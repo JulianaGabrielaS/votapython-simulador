@@ -91,3 +91,27 @@ else:
     print(f'Influêncio Digital: {porcentagem_influencio:.1f}%')
     print(f'Impostácio: {porcentagem_impostacio:.1f}%')
     print(f'Dona Burocracia: {porcentagem_burocracia:.1f}%')
+
+    #Identifica a maior quantidade de votos
+    maior_votos = max(votos_promessinha, votos_influencio, votos_impostacio, votos_burocracia)
+
+    vencedores = []
+    if votos_promessinha == maior_votos:
+        vencedores.append('Promessinha')
+    if votos_influencio == maior_votos:
+        vencedores.append('Influêncio Digital')
+    if votos_impostacio == maior_votos:
+        vencedores.append('Impostácio')
+    if votos_burocracia == maior_votos:
+        vencedores.append('Dona Burocracia')
+
+    print('====== RESULTADO FINAL ======')
+    if len(vencedores) == 1:
+        print(f'Vencedor: {vencedores[0]}!')
+        print(f'Votos recebidos: {maior_votos}')
+    else:
+        print(f'EMPATE NA APURAÇÃO!')
+        print(f'Total de votos dos candidatos empatados: {maior_votos}')
+        print('Candidatos: ')
+        for candidato in vencedores:
+            print(f' - {candidato}')
