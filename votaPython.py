@@ -6,104 +6,71 @@ candidatos = [
 ]
 
 numeros = [10, 20, 30, 40]
-
-votos_promessinha = 0
-votos_influencio = 0
-votos_impostacio = 0
-votos_burocracia = 0
+votos = [0, 0, 0, 0]
 
 print('=== VOTA PYTHON ===')
 print('Isto é apenas uma simulação\n')
 
 while True:
     print("=== CANDIDATOS ===")
-    print('10 - Promessinha\n20 - Influêncio Digital\n30 - Impostácio\n40 - Dona Burocracia')
 
-    numero = input('\nDigite o número do seu candidato: ')
+    for i in range(len(candidatos)):
+        print(f'{numeros[i]} - {candidatos[i]}')
+
+    numero = input('\nDigite o número do seu candidato (0 para sair): ')
+
     if numero == '0':
         break
-    elif numero == '10':
-        candidato = candidatos[0]
-        print(f'Candidato: {candidato}')
-        confirma = input('Confirma o voto? [S/N]: ').lower()
-        if confirma == 's':
-            votos_promessinha += 1
-            print('Voto registrado!')
-        else:
-            print('Voto cancelado.')
-    elif numero == '20':
-        candidato = candidatos[1]
-        print(f'Candidato: {candidato}')
-        confirma = input('Confirma o voto? [S/N]: ').lower()
-        if confirma == 's':
-            votos_influencio += 1
-            print('Voto registrado!')
-        else:
-            print('Voto cancelado.')
-    elif numero == '30':
-        candidato = candidatos[2]
-        print(f'Candidato: {candidato}')
-        confirma = input('Confirma o voto? [S/N]: ').lower()
-        if confirma == 's':
-            votos_impostacio += 1
-            print('Voto registrado!')
-        else:
-            print('Voto cancelado.')
-    elif numero == '40':
-        candidato = candidatos[3]
-        print(f'Candidato: {candidato}')
-        confirma = input('Confirma o voto? [S/N]: ').lower()
-        if confirma == 's':
-            votos_burocracia += 1
-            print('Voto registrado!')
-        else:
-            print('Voto cancelado.')
-    else:
+
+    if not numero.isdigit() or int(numero) not in numeros:
         print('Número inválido!')
-    continua = input('Deseja votar novamente? [S/N]: ').lower()
+        continue
+
+    indice = numeros.index(int(numero))
+
+    print(f'Candidato: {candidatos[indice]}')
+    confirma = input('Confirma o voto? [S/N]: ').strip().lower()
+
+    while confirma not in ('s', 'n'):
+        print('Resposta inválida! Digite S ou N.')
+        confirma = input('Confirma o voto? [S/N]: ').strip().lower()
+    if confirma == 's':
+        votos[indice] += 1
+        print('Voto registrado!')
+    else:
+        print('Voto cancelado.')
+
+    continua = input('Deseja votar novamente? [S/N]: ').strip().lower()
+
+    while continua not in ('s', 'n'):
+        print('Resposta inválida! Digite S ou N.')
+        continua = input('Deseja votar novamente? [S/N]: ').strip().lower()
+
     if continua == 'n':
         break
 
-#Apurações
-total = (votos_promessinha + votos_influencio + votos_impostacio + votos_burocracia)
-
 print('======= APURAÇÕES ========')
+
+total = sum(votos)
 
 if total == 0:
     print('Nenhum voto foi registrado.')
     print('Não há resultado para apresentar.')
 else: 
     print(f'Total de votos válidos: {total}')
-    print('\n====== RESULTADO POR CANDIDATO ======')    
-    print(f'Promessinha: {votos_promessinha} votos.')
-    print(f'Influêncio Digital: {votos_influencio} votos.')
-    print(f'Impostácio: {votos_impostacio} votos.')
-    print(f'Dona Burocracia: {votos_burocracia} votos.')
 
-    #porcentagem de votos
-    porcentagem_promessinha = (votos_promessinha/total) * 100
-    porcentagem_influencio = (votos_influencio/total) * 100
-    porcentagem_impostacio = (votos_impostacio/total) * 100
-    porcentagem_burocracia = (votos_burocracia/total) * 100
-
-    print('====== PORCENTAGEM DE VOTOS ======')
-    print(f'Promessinha: {porcentagem_promessinha:.1f}%')
-    print(f'Influêncio Digital: {porcentagem_influencio:.1f}%')
-    print(f'Impostácio: {porcentagem_impostacio:.1f}%')
-    print(f'Dona Burocracia: {porcentagem_burocracia:.1f}%')
+    print('\n====== RESULTADO POR CANDIDATO ======')  
+    for i in range(len(candidatos)):
+        porcentagem = (votos[i] / total) * 100
+        print(f'{candidatos[i]}: {votos[i]} votos ({porcentagem:.1f}%)')
 
     #Identifica a maior quantidade de votos
-    maior_votos = max(votos_promessinha, votos_influencio, votos_impostacio, votos_burocracia)
-
+    maior_votos = max(votos)
     vencedores = []
-    if votos_promessinha == maior_votos:
-        vencedores.append('Promessinha')
-    if votos_influencio == maior_votos:
-        vencedores.append('Influêncio Digital')
-    if votos_impostacio == maior_votos:
-        vencedores.append('Impostácio')
-    if votos_burocracia == maior_votos:
-        vencedores.append('Dona Burocracia')
+
+    for i in range(len(candidatos)):
+        if votos[i] == maior_votos:
+            vencedores.append(candidatos[i])
 
     print('====== RESULTADO FINAL ======')
     if len(vencedores) == 1:
