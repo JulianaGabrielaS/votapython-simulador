@@ -68,7 +68,7 @@ while True:
     if continua == 'n':
         break
 
-print('======= APURAÇÕES ========')
+print('\n======= APURAÇÕES ========')
 
 total_candidatos = sum(votos)
 total = total_candidatos + votos_branco
@@ -98,7 +98,7 @@ else:
             if votos[i] == maior_votos:
                 vencedores.append(candidatos[i])
 
-        print('====== RESULTADO FINAL ======')
+        print('\n====== RESULTADO FINAL ======')
         if len(vencedores) == 1:
             print(f'Vencedor: {vencedores[0]}!')
             print(f'Votos recebidos: {maior_votos}')
