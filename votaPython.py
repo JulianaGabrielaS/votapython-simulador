@@ -42,22 +42,22 @@ while True:
         print('Número inválido!')
         continue
 
-    confirma = input('Confirma o voto? [S/N]: ').strip().lower()
+    confirma = input('Confirma o voto? \n[S] Sim \n[N] Não, quero corrigir.\n>> ').strip().lower()
 
     while confirma not in ('s', 'n'):
         print('Resposta inválida! Digite S ou N.')
-        confirma = input('Confirma o voto? [S/N]: ').strip().lower()
+        confirma = input('Confirma o voto? \n[S] Sim \n[N] Não, quero corrigir.\n>> ').strip().lower()
 
-    if confirma == 's':
-        if numero == 50:
-            votos_branco += 1
-            print('Voto em branco registrado!')
-        else:
-            votos[indice] += 1
-            print('Voto registrado!')
-    else:
-        print('Voto cancelado.')
+    if confirma == 'n':
+        print('Vamos escolher novamente.')
         continue
+
+    if numero == 50:
+        votos_branco += 1
+        print('Voto em branco registrado!')
+    else:
+        votos[indice] += 1
+        print('Voto registrado!')
 
     continua = input('Deseja votar novamente? [S/N]: ').strip().lower()
 
